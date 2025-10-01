@@ -39,7 +39,7 @@ Next, we will need a `sum` to keep count of how many bottles of water we drink. 
 
 Then we need to calculate the remaining bottles leftover. There are situations where we have more bottles than we can exchange, such as `numBottles = 10` and `numExchange = 4`. In this case, after exchanging, we will have 2 full bottles and 2 remaining bottles. Once the two full bottles are drank, we have 4 total empty bottles, which could be exchanged for 1 more full bottle. To calculate the remaining bottles, we can just use modulo division: `remainingBottles = numBottles % numExchange`
 
-This needs to be implemented in a loop. We can use a `while(numBottles < numExchange)` loop condition, updating numBottles to be `numBottles = exchangedBottles + remainingBottles` until `numBottles < numExchange` return `true`, which means we no longer have enough bottles to exchange for a full bottle of water.
+This needs to be implemented in a loop. We can use a `while(numBottles >= numExchange)` loop condition, updating numBottles to be `numBottles = exchangedBottles + remainingBottles` until `numBottles >= numExchange` return `false`, which means we no longer have enough bottles to exchange for a full bottle of water.
 
 Now to implement it all:
 
@@ -51,7 +51,7 @@ Class Solution {
         if (numBottles < numExchange) { return numBottles; }
         
         int sum = numBottles;
-        while (numBottles < numExchange) { 
+        while (numBottles >= numExchange) { 
             
             // compute exchanged bottles
             int exchangedBottles = numBottles / numExchange;
